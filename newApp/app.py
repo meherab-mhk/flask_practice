@@ -21,12 +21,12 @@ class People(db.Model):
 
 @app.route('/')
 def home():
-    return '<a href="/addperson"><button> Click here </button></a>'
+    return render_template('index.html')
 
 
 @app.route("/addperson")
 def addperson():
-    return render_template("index.html")
+    return render_template("form.html")
 
 
 @app.route("/personadd", methods=['POST'])
@@ -37,7 +37,7 @@ def personadd():
     db.session.add(entry)
     db.session.commit()
 
-    return render_template("index.html")
+    return render_template("form.html")
 
 if __name__ == '__main__':
     db.create_all()
